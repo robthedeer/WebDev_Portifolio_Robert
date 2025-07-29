@@ -123,7 +123,7 @@
         
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--light-text);
             cursor: pointer;
             margin-left: 15px;
@@ -416,7 +416,55 @@
             font-size: 0.8rem;
             border: 1px solid rgba(138, 43, 226, 0.3);
         }
-
+         /* Pricing Section */
+          /* New Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(138, 43, 226, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(138, 43, 226, 0.3);
+            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.2);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent-lime);
+        }
+        
+        .pricing-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-purple);
+        }
+        
+        .pricing-card .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 0.95rem;
+        }
         /* Projects Section */
         .projects {
             padding: 80px 0;
@@ -425,7 +473,7 @@
         .featured-projects {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
         
         .project-card {
@@ -435,6 +483,8 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: var(--transition);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: none;
+            margin: 0 auto 20px;
         }
         
         .project-card:hover {
@@ -510,9 +560,12 @@
         }
         
         .btn-small {
-            padding: 8px 14px;
+            padding: 8px 10px;
             font-size: 0.8rem;
             white-space: nowrap;
+            text-align: center;
+            min-width: 120px;
+            flex:1;
         }
 
         /* Process Section */
@@ -853,7 +906,7 @@
         
         @media (max-width: 480px) {
             .container {
-                width: 98%;
+                width: 96%;
                 padding: 0 5px;
             }
             
@@ -938,6 +991,24 @@
                 margin-left: 10px;
             }
         }
+        /* Animation for pricing cards */
+        @keyframes slideIn {
+            0% { transform: translateX(-30px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .pricing-card {
+            animation: slideIn 0.6s ease forwards;
+        }
+        
+        .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.2s; }
+        .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+        .pricing-card:nth-child(4) { animation-delay: 0.4s; }
+        .pricing-card:nth-child(5) { animation-delay: 0.5s; }
+        .pricing-card:nth-child(6) { animation-delay: 0.6s; }
+        .pricing-card:nth-child(7) { animation-delay: 0.7s; }
+        .pricing-card:nth-child(8) { animation-delay: 0.8s; }
     </style>
 </head>
 <body>
@@ -955,6 +1026,7 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#pricing"> Prices</a><li></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#roadmap">Process</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1073,7 +1145,74 @@
             </div>
         </div>
     </section>
-
+    <!-- New Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header animate">
+                <h2>Prices & Services</h2>
+                <p>Transparent pricing for common digital solutions</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <!-- Service 1 -->
+                <div class="pricing-card">
+                    <h3>Landing Page</h3>
+                    <div class="price">from $65</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-primary" target="_blank">Order Now</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="pricing-card">
+                    <h3>Online Shop</h3>
+                    <div class="price">Inquire</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-secondary" target="_blank">Request Price</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="pricing-card">
+                    <h3>Mobile App</h3>
+                    <div class="price">Inquire</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-secondary" target="_blank">Request Price</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="pricing-card">
+                    <h3>Multi-Pages Website</h3>
+                    <div class="price">Inquire</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-secondary" target="_blank">Request Price</a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="pricing-card">
+                    <h3>Telegram Bots</h3>
+                    <div class="price">Inquire</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-secondary" target="_blank">Inquire on WhatsApp</a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="pricing-card">
+                    <h3>Figma Design Prototype</h3>
+                    <div class="price">from $50</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-primary" target="_blank">Order Now</a>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="pricing-card">
+                    <h3>WebApp</h3>
+                    <div class="price">Request Price</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-secondary" target="_blank">Get Quote</a>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="pricing-card">
+                    <h3>Portfolio Site</h3>
+                    <div class="price">Inquire</div>
+                    <a href="https://wa.me/79104483756" class="btn btn-secondary" target="_blank">Request Price</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
@@ -1116,7 +1255,7 @@
                         <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Programming School">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Qesaixul - Programming School</h3>
+                        <h3 class="project-title">QESAixul - Programming School</h3>
                         <p class="project-description">Learning platform with course management, progress tracking, and coding environment.</p>
                         
                         <div class="tech-stack">
@@ -1481,6 +1620,10 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0)';
             });
+        });
+        // Pricing card animations
+        document.querySelectorAll('.pricing-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
         });
     </script>
 </body>
