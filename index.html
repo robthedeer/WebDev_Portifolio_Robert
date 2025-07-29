@@ -21,6 +21,7 @@
             --gray-text: #a0a0b0;
             --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --whatsapp-green: #25d366;
         }
 
         * {
@@ -52,10 +53,10 @@
         }
         
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 10px;
         }
         
         .header-content {
@@ -112,6 +113,12 @@
         
         nav a:hover:after {
             width: 100%;
+        }
+        
+        .mobile-nav-container {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
         }
         
         .mobile-menu {
@@ -367,7 +374,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
         
         .skill-category {
@@ -376,8 +383,8 @@
             padding: 25px;
             transition: var(--transition);
             border: 1px solid rgba(138, 43, 226, 0.1);
-            min-width: 280px;
-            flex: 1;
+            width: 100%;
+            max-width: 500px;
         }
         
         .skill-category:hover {
@@ -397,16 +404,16 @@
         .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             list-style: none;
         }
         
         .skill-list li {
-            padding: 8px 15px;
+            padding: 6px 12px;
             background: rgba(138, 43, 226, 0.15);
             border-radius: 30px;
             color: #c792ea;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             border: 1px solid rgba(138, 43, 226, 0.3);
         }
 
@@ -417,7 +424,7 @@
         
         .featured-projects {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
         }
         
@@ -437,7 +444,7 @@
         }
         
         .project-preview {
-            height: 180px;
+            height: 200px;
             overflow: hidden;
             position: relative;
         }
@@ -483,16 +490,16 @@
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
         }
         
         .tech-tag {
             background: rgba(138, 43, 226, 0.15);
             color: #c792ea;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 100px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             border: 1px solid rgba(138, 43, 226, 0.3);
         }
@@ -503,99 +510,107 @@
         }
         
         .btn-small {
-            padding: 8px 16px;
-            font-size: 0.85rem;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            white-space: nowrap;
         }
 
-        /* Roadmap Section */
+        /* Process Section */
         .roadmap {
             background: rgba(0, 0, 0, 0.2);
             padding: 80px 0;
         }
         
-        .roadmap-container {
-            position: relative;
+        .process-container {
             max-width: 800px;
             margin: 0 auto;
-        }
-        
-        .roadmap-container:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: var(--accent-purple);
-            border-radius: 2px;
-        }
-        
-        .roadmap-step {
             position: relative;
-            margin-bottom: 40px;
-            width: calc(50% - 30px);
         }
         
-        .roadmap-step:nth-child(odd) {
-            left: 0;
-            text-align: right;
-            padding-right: 50px;
-        }
-        
-        .roadmap-step:nth-child(even) {
-            left: 50%;
-            padding-left: 50px;
-        }
-        
-        .roadmap-step:last-child {
-            margin-bottom: 0;
-        }
-        
-        .roadmap-step:before {
-            content: '';
+        .process-line {
             position: absolute;
-            width: 16px;
-            height: 16px;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-purple);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .process-step {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+            border: 1px solid rgba(138, 43, 226, 0.1);
+            max-width: 85%;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .process-step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .process-step:nth-child(even) {
+            margin-left: 15%;
+        }
+        
+        .process-step:nth-child(odd) {
+            margin-right: 15%;
+        }
+        
+        .step-indicator {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-purple);
             border-radius: 50%;
-            background: var(--accent-purple);
-            border: 3px solid var(--dark-bg);
-        }
-        
-        .roadmap-step:nth-child(odd):before {
-            right: -42px;
-            top: 8px;
-        }
-        
-        .roadmap-step:nth-child(even):before {
-            left: -42px;
-            top: 8px;
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            line-height: 32px;
-            text-align: center;
-            background: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            border-radius: 50%;
             font-weight: bold;
+            top: 25px;
+        }
+        
+        .process-step:nth-child(odd) .step-indicator {
+            right: -45px;
+        }
+        
+        .process-step:nth-child(even) .step-indicator {
+            left: -45px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.3rem;
             margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-        
-        .roadmap-step h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
             color: var(--accent-lime);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .roadmap-step p {
+        .process-step p {
             color: var(--gray-text);
-            line-height: 1.6;
             font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .process-step:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
         }
 
         /* Contact Section */
@@ -612,10 +627,10 @@
         .contact-info {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 15px;
             width: 100%;
             max-width: 600px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .contact-item {
@@ -624,7 +639,7 @@
             align-items: center;
             text-align: center;
             background: var(--card-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: var(--border-radius);
             transition: var(--transition);
         }
@@ -635,32 +650,54 @@
         }
         
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: var(--accent-purple);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
         }
         
         .contact-text h4 {
             color: var(--accent-lime);
             margin-bottom: 5px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .contact-text p {
             color: var(--gray-text);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         .contact-buttons {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 10px;
+        }
+        
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-call {
+            background: var(--accent-purple);
+            color: white;
+        }
+        
+        .btn-contact {
+            padding: 10px 20px;
+            font-size: 0.9rem;
         }
 
         /* Footer */
@@ -732,6 +769,10 @@
             .featured-projects {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .process-step {
+                max-width: 90%;
+            }
         }
         
         @media (max-width: 768px) {
@@ -778,33 +819,23 @@
                 display: none;
             }
             
-            .roadmap-container:before {
+            .process-line {
                 left: 30px;
             }
             
-            .roadmap-step {
-                width: calc(100% - 40px);
-                left: 0;
-                padding-left: 70px;
-                text-align: left;
+            .process-step {
+                max-width: calc(100% - 60px);
+                margin: 0 0 40px 30px !important;
             }
             
-            .roadmap-step:nth-child(odd),
-            .roadmap-step:nth-child(even) {
-                left: 0;
-                padding-right: 0;
-                padding-left: 70px;
-                text-align: left;
-            }
-            
-            .roadmap-step:nth-child(odd):before,
-            .roadmap-step:nth-child(even):before {
-                left: 28px;
+            .process-step:nth-child(odd) .step-indicator,
+            .process-step:nth-child(even) .step-indicator {
+                left: -45px;
                 right: auto;
             }
-
+            
             .project-preview {
-                height: 160px;
+                height: 180px;
             }
             
             .featured-projects {
@@ -814,9 +845,18 @@
             .contact-info {
                 grid-template-columns: 1fr;
             }
+            
+            .mobile-nav-container {
+                margin-left: auto;
+            }
         }
         
         @media (max-width: 480px) {
+            .container {
+                width: 98%;
+                padding: 0 5px;
+            }
+            
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             .section-header h2 { font-size: 1.6rem; }
@@ -827,8 +867,8 @@
             }
             
             .project-card {
-                transform: scale(0.9);
-                margin: -20px auto;
+                transform: scale(0.95);
+                margin: -15px auto;
             }
             
             .project-title {
@@ -842,13 +882,13 @@
             }
             
             .project-actions {
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row;
+                gap: 8px;
             }
             
             .btn-small {
-                padding: 8px 12px;
-                font-size: 0.8rem;
+                padding: 6px 12px;
+                font-size: 0.75rem;
             }
             
             .card {
@@ -873,12 +913,14 @@
             }
             
             .contact-buttons {
-                flex-direction: column;
+                flex-direction: row;
                 width: 100%;
+                justify-content: center;
             }
             
             .contact-buttons .btn {
-                width: 100%;
+                width: auto;
+                padding: 10px 15px;
             }
             
             .mobile-nav-container {
@@ -889,6 +931,11 @@
             .language-toggle {
                 padding: 6px 10px;
                 font-size: 0.8rem;
+                margin-right: 5px;
+            }
+            
+            .mobile-menu {
+                margin-left: 10px;
             }
         }
     </style>
@@ -990,6 +1037,8 @@
                         <li>Shopify</li>
                         <li>Netlify</li>
                         <li>Vercel</li>
+                        <li>GitHub</li>
+                        <li>Firebase</li>
                     </ul>
                 </div>
                 <div class="skill-category animate delay-1">
@@ -1004,6 +1053,8 @@
                         <li>HTML5</li>
                         <li>Dart (Flutter)</li>
                         <li>Flask (Python)</li>
+                        <li>TypeScript</li>
+                        <li>Next.js</li>
                     </ul>
                 </div>
                 <div class="skill-category animate delay-2">
@@ -1015,6 +1066,8 @@
                         <li>Landing Pages</li>
                         <li>Advertising</li>
                         <li>Figma Prototypes</li>
+                        <li>Mobile Apps</li>
+                        <li>API Development</li>
                     </ul>
                 </div>
             </div>
@@ -1051,7 +1104,7 @@
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="#" class="btn btn-secondary btn-small">
-                                <i class="fas fa-shopping-cart"></i> Order Site
+                                <i class="fas fa-shopping-cart"></i> Order
                             </a>
                         </div>
                     </div>
@@ -1078,7 +1131,7 @@
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="#" class="btn btn-secondary btn-small">
-                                <i class="fas fa-shopping-cart"></i> Order Site
+                                <i class="fas fa-shopping-cart"></i> Order
                             </a>
                         </div>
                     </div>
@@ -1105,7 +1158,7 @@
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="#" class="btn btn-secondary btn-small">
-                                <i class="fas fa-shopping-cart"></i> Order Site
+                                <i class="fas fa-shopping-cart"></i> Order
                             </a>
                         </div>
                     </div>
@@ -1132,7 +1185,7 @@
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="#" class="btn btn-secondary btn-small">
-                                <i class="fas fa-shopping-cart"></i> Order Site
+                                <i class="fas fa-shopping-cart"></i> Order
                             </a>
                         </div>
                     </div>
@@ -1159,7 +1212,7 @@
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="#" class="btn btn-secondary btn-small">
-                                <i class="fas fa-shopping-cart"></i> Order Site
+                                <i class="fas fa-shopping-cart"></i> Order
                             </a>
                         </div>
                     </div>
@@ -1186,7 +1239,7 @@
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="#" class="btn btn-secondary btn-small">
-                                <i class="fas fa-shopping-cart"></i> Order Site
+                                <i class="fas fa-shopping-cart"></i> Order
                             </a>
                         </div>
                     </div>
@@ -1195,54 +1248,57 @@
         </div>
     </section>
 
-    <!-- Roadmap Section -->
+    <!-- Process Section -->
     <section id="roadmap" class="roadmap">
         <div class="container">
             <div class="section-header animate">
                 <h2>Development Process</h2>
                 <p>Structured approach to delivering exceptional digital solutions</p>
             </div>
-            <div class="roadmap-container">
-                <!-- Step 1 -->
-                <div class="roadmap-step animate">
-                    <div class="step-number">1</div>
-                    <h3>Requirement Analysis</h3>
-                    <p>Discuss project requirements, goals, and target audience to create a detailed plan.</p>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="roadmap-step animate delay-1">
-                    <div class="step-number">2</div>
-                    <h3>Design & Prototyping</h3>
-                    <p>Create wireframes and prototypes in Figma to ensure optimal user experience.</p>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="roadmap-step animate delay-2">
-                    <div class="step-number">3</div>
-                    <h3>Development Phase</h3>
-                    <p>Develop your website/application with modern technologies and clean code.</p>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="roadmap-step animate delay-3">
-                    <div class="step-number">4</div>
-                    <h3>Testing & Refinement</h3>
-                    <p>Rigorous testing across devices to ensure optimal performance and UX.</p>
-                </div>
-                
-                <!-- Step 5 -->
-                <div class="roadmap-step animate delay-4">
-                    <div class="step-number">5</div>
-                    <h3>Deployment & Launch</h3>
-                    <p>Final deployment to hosting platform with full launch support.</p>
-                </div>
-                
-                <!-- Step 6 -->
-                <div class="roadmap-step animate delay-5">
-                    <div class="step-number">6</div>
-                    <h3>Maintenance & Support</h3>
-                    <p>Ongoing support to keep your digital product running smoothly.</p>
+            <div class="process-container">
+                <div class="process-line"></div>
+                <div class="process-steps">
+                    <!-- Step 1 -->
+                    <div class="process-step animate">
+                        <div class="step-indicator">1</div>
+                        <h3><i class="fas fa-clipboard-list"></i> Requirement Analysis</h3>
+                        <p>We start by discussing your project requirements, goals, and target audience to create a detailed project plan that aligns with your vision.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="process-step animate delay-1">
+                        <div class="step-indicator">2</div>
+                        <h3><i class="fas fa-palette"></i> Design & Prototyping</h3>
+                        <p>I create wireframes and design prototypes in Figma, ensuring the user experience aligns with your business objectives and brand identity.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="process-step animate delay-2">
+                        <div class="step-indicator">3</div>
+                        <h3><i class="fas fa-laptop-code"></i> Development Phase</h3>
+                        <p>Using modern technologies and best practices, I develop your website/application with clean, maintainable code and responsive design.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="process-step animate delay-3">
+                        <div class="step-indicator">4</div>
+                        <h3><i class="fas fa-bug"></i> Testing & Refinement</h3>
+                        <p>Rigorous testing across devices and browsers to ensure optimal performance, security, and user experience before launch.</p>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="process-step animate delay-4">
+                        <div class="step-indicator">5</div>
+                        <h3><i class="fas fa-rocket"></i> Deployment & Launch</h3>
+                        <p>Final deployment to your hosting platform with full support during the launch phase to ensure a smooth transition.</p>
+                    </div>
+                    
+                    <!-- Step 6 -->
+                    <div class="process-step animate delay-5">
+                        <div class="step-indicator">6</div>
+                        <h3><i class="fas fa-cogs"></i> Maintenance & Support</h3>
+                        <p>Ongoing support and maintenance to keep your digital product running smoothly with updates and improvements.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1299,10 +1355,10 @@
                 </div>
                 
                 <div class="contact-buttons animate delay-4">
-                    <a href="https://wa.me/79104483756" class="btn btn-primary" target="_blank">
+                    <a href="https://wa.me/79104483756" class="btn btn-whatsapp btn-contact" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="tel:+79104483756" class="btn btn-secondary">
+                    <a href="tel:+79104483756" class="btn btn-call btn-contact">
                         <i class="fas fa-phone"></i> Call Now
                     </a>
                 </div>
@@ -1370,6 +1426,7 @@
         // Animation on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.animate');
+            const processSteps = document.querySelectorAll('.process-step');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -1378,6 +1435,16 @@
                 if (elementPosition < screenPosition) {
                     element.style.opacity = 1;
                     element.style.visibility = 'visible';
+                }
+            });
+            
+            // Animate process steps
+            processSteps.forEach(step => {
+                const stepPosition = step.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (stepPosition < screenPosition) {
+                    step.classList.add('animate');
                 }
             });
         };
